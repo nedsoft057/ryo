@@ -256,6 +256,24 @@ footer{position:relative;z-index:2;max-width:1180px;margin:0 auto;padding:60px 4
 .tw .ld{font:500 12px var(--fm);color:var(--dim)}
 .mbox .ft{display:flex;justify-content:flex-end;margin-top:16px}
 @media (prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;scroll-behavior:auto!important}}
+.xr.has{grid-template-columns:70px minmax(0,1fr) minmax(0,1.2fr)}
+.xposts{grid-column:1/-1;display:grid;grid-template-columns:repeat(var(--n,4),minmax(0,1fr));gap:12px;margin-top:6px}
+.cgrid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;margin-top:18px}
+.subh{margin-top:56px;max-width:640px}.subh h3{font-size:clamp(22px,2.2vw,28px);line-height:1.15}.subh p{color:var(--mute);font-size:15.5px;margin-top:8px}
+.pc{display:flex;flex-direction:column;text-align:left;border:1px solid var(--line);border-radius:16px;overflow:hidden;background:var(--bg-2);color:inherit;font:inherit;cursor:pointer;transition:border-color .25s,transform .3s}
+.pc:hover{border-color:var(--line-2);transform:translateY(-3px)}
+.pc .cv{aspect-ratio:16/10;overflow:hidden;background:#000;border-bottom:1px solid var(--line)}
+.pc .cv img{width:100%;height:100%;object-fit:cover;transition:transform .8s cubic-bezier(.2,.7,.2,1)}
+.pc .cv.art img{object-fit:contain;object-position:center top}
+.pc:hover .cv img{transform:scale(1.04)}
+.pc .pb{display:flex;flex-direction:column;flex:1;padding:14px 16px 16px}
+.pc .tp{font:500 11px var(--fm);letter-spacing:.08em;text-transform:uppercase;color:var(--amb-2);margin-bottom:8px}
+.pc h4{font-size:16px;line-height:1.25;font-weight:600}
+.pc p{color:var(--mute);font-size:13.5px;line-height:1.5;margin-top:6px}
+.pc .go{margin-top:auto;padding-top:12px;font-size:13px;font-weight:500;color:var(--amb-2)}
+@media(max-width:1000px){.xposts,.cgrid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:760px){.xr.has{grid-template-columns:1fr}}
+@media(max-width:640px){.xposts,.cgrid{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;gap:10px;margin-left:-22px;margin-right:-22px;padding:0 22px 6px;scrollbar-width:none}.cgrid{margin-left:0;margin-right:0;padding:0 0 6px}.xposts::-webkit-scrollbar,.cgrid::-webkit-scrollbar{display:none}.pc{flex:0 0 78%;scroll-snap-align:start}}
 </style>
 </head>
 <body>
@@ -295,17 +313,19 @@ footer{position:relative;z-index:2;max-width:1180px;margin:0 auto;padding:60px 4
     <div class="pf"><img src="a/ryo.webp" alt="RYO"><div><b>RYO</b><span>Web3 content writer &amp; project manager</span><br><a href="https://x.com/notlikeryo_" target="_blank" rel="noopener">@notlikeryo_ ↗</a></div></div></div>
   <div class="txt rv d1">
     <p>I'm RYO, a Web3 content writer and project manager with <b>3 years in crypto</b>. I turn complex protocols, products and market narratives into <b>clear, engaging stories</b>, and I support teams with the coordination it takes to move ideas forward.</p>
-    <div class="stats"><div class="stat"><b><span data-to="3">0</span><em>+</em></b><span>Years in Web3</span></div><div class="stat"><b><span data-to="3">0</span></b><span>Teams worked with</span></div><div class="stat"><b><span data-to="8">0</span></b><span>Things I do well</span></div></div>
+    <div class="stats"><div class="stat"><b><span data-to="3">0</span><em>+</em></b><span>Years in Web3</span></div><div class="stat"><b><span data-to="4">0</span></b><span>Teams worked with</span></div><div class="stat"><b><span data-to="8">0</span></b><span>Things I do well</span></div></div>
   </div>
 </div></section>
 
 <section class="sec" id="writing"><div class="wrap">
   <div class="sh rv"><span class="k">Selected writing</span><h2 class="grad">Research, narratives and clear communication.</h2><p>Three pieces that show how I work: a market narrative, an ecosystem breakdown and a project story. Open any of them to read the post right here.</p></div>
   <div class="wgrid" id="wgrid"></div>
+  <div class="subh rv"><h3>Recent coverage</h3><p>Quick reads on launches and reports across AI and crypto.</p></div>
+  <div class="cgrid" id="cgrid"></div>
 </div></section>
 
 <section class="sec" id="experience"><div class="wrap">
-  <div class="sh rv"><span class="k">Experience</span><h2 class="grad">Work across content, growth and community.</h2></div>
+  <div class="sh rv"><span class="k">Experience</span><h2 class="grad">Work across content, growth and community.</h2><p>The roles I hold, and the posts that came out of them. Open any post to read it right here.</p></div>
   <div class="xp" id="xp"></div>
 </div></section>
 
@@ -351,9 +371,27 @@ const WRITING=[
  {id:'2072315533546905881',k:'02 · Ecosystem breakdown',t:'The Other Screen',topic:'Mantle Ecosystem',img:'w-mantle',d:'A clear look at the products, infrastructure and opportunities within the growing Mantle ecosystem.',body:[],tags:['Ecosystem','Infrastructure','Research'],art:'eco'},
  {id:'2034257645742248264',k:'03 · Project storytelling',t:'The Complete Guide to CarrotFunding',topic:'Carrot Funding',img:'w-carrot',d:'A project breakdown designed to communicate the product, vision and value proposition clearly.',body:[],tags:['Storytelling','Product','Launch content'],art:'story'}];
 const XP=[
- {t:'Carrot Funding',r:'Growth Manager',d:'Managed X content, contributed to growth strategy, coordinated campaigns and supported user-acquisition initiatives.'},
+ {t:'Migma AI',r:'Content Ambassador',d:"I break down Migma's email tools in public, rebuild real campaigns, and show what works before send.",posts:[
+  {id:'2105964510779687285',img:'m-cook',t:'Officially a Migma creator',d:'Announcing the role, with Migma now in the bio.'},
+  {id:'2105599295055343836',img:'m-hi',art:1,t:'The Email That Started With “Hi ,”',d:'Merge tags explained through one send that went wrong at 11:40 at night.'},
+  {id:'2106338156866048369',img:'m-explore',t:'Breaking down Migma, one feature at a time',d:"The series kickoff: testing Migma's tools in public and sharing what holds up."},
+  {id:'2119055216028913895',img:'m-funderpro',t:"Rebuilding FunderPro's NOV20 email",d:'A before-and-after redesign with one clear CTA and easier-to-read terms.'}]},
+ {t:'Carrot Funding',r:'Growth Partner',d:'Managed X content, contributed to growth strategy, coordinated campaigns and supported user-acquisition initiatives.',posts:[
+  {id:'2032428569897406475',img:'c-partner',t:'Officially a Carrot Growth Partner',d:'Accepted into the Carrot Growth program to bring more traders into the ecosystem.'},
+  {id:'2044034183073300493',img:'c-game',art:1,t:'The Game Changed. Here’s Everything That Happened',d:"A recap of Carrot's Easter trading competition: 2,760 traders and $90,000 on the line."},
+  {id:'2053862408121118985',img:'c-trust',t:'Why traders trust Carrot',d:'Survey data from 4,000+ users, and how Carrot answered it with on-chain payouts.'}]},
  {t:'Nubila Network',r:'Community Moderator',d:"Supported the management and day-to-day health of the project's community."},
  {t:'StakeToby',r:'Community Moderator',d:'Helped manage community interactions and kept an active, organized space for members.'}];
+const COVER=[
+ {id:'2109589469301002402',img:'x-nous',topic:'Nous Research',t:'Nous drops MISSINGNO.',d:'A free, token-efficient coding model lands in Hermes Agent.'},
+ {id:'2110739017654284384',img:'x-stepfun',topic:'StepFun',t:'Step 5 Preview goes open-weight',d:'600B parameters, 27B active and a 1M context window, built for day-long agents.'},
+ {id:'2117595317377896844',img:'x-chimpx',topic:'ChimpX AI',t:'How ChimpX simplifies DeFi swaps',d:'Three years building an AI assistant for swaps, and what to know about $CHIMP.'},
+ {id:'2112189515372667233',img:'x-stacks',topic:'Stacks',t:"Stacks' Q3 report, read closely",d:'Bitcoin staking, institutions and liquid staking: what changed and why it matters.'}];
+const POSTS={};
+WRITING.forEach(w=>POSTS[w.id]={k:w.k,t:w.t,d:w.d});
+XP.forEach(x=>(x.posts||[]).forEach(p=>POSTS[p.id]={k:`${x.t} · ${x.r}`,t:p.t,d:p.d}));
+COVER.forEach(c=>POSTS[c.id]={k:`Coverage · ${c.topic}`,t:c.t,d:c.d});
+const pcard=(p,i,tp)=>`<button class="pc rv d${i%4}" data-tw="${p.id}"><div class="cv${p.art?' art':''}"><img src="a/${p.img}.webp" alt="${esc(p.t)}" loading="lazy"></div><div class="pb">${tp?`<span class="tp">${esc(tp)}</span>`:''}<h4>${esc(p.t)}</h4><p>${esc(p.d)}</p><span class="go">Read on X →</span></div></button>`;
 const SVC=[['Web3 content writing','pen',1,'Threads, articles and long-form that explain protocols without losing the reader.'],['Protocol and project breakdowns','layers'],['Educational content','book'],['X threads and social content','x'],['Launch and announcement content','rocket'],['Market narratives and storytelling','spark'],['Growth strategy and campaigns','chart',1,'Content-led growth plans and campaign coordination that bring users in and keep them.'],['Project coordination','grid']];
 
 /* nav */
@@ -361,12 +399,12 @@ const nav=$('#nav');const ns=()=>nav.classList.toggle('solid',scrollY>30);addEve
 /* hero words */
 (()=>{const h=$('#h1');h.innerHTML=h.textContent.split(' ').map((w,i)=>`<span class="w" style="--i:${i}">${w}</span>`).join(' ')})();
 /* marquee */
-(()=>{const w=['Web3 content','Market narratives','Carrot Funding','Mantle','X threads','Growth campaigns','Nubila Network','Community','StakeToby','Project coordination','Launch content','Memecoins'];const h=w.map(x=>`<span>${x}</span>`).join('');$('#mq').innerHTML=h+h})();
+(()=>{const w=['Web3 content','Migma AI','Market narratives','Carrot Funding','Email campaigns','Mantle','X threads','Growth campaigns','Nubila Network','Community','StakeToby','Project coordination','Launch content','Memecoins'];const h=w.map(x=>`<span>${x}</span>`).join('');$('#mq').innerHTML=h+h})();
 
 /* WORKSPACE */
 const GROUPS=[
  {k:'writing',n:'Writing',items:WRITING.map(w=>({t:w.t,meta:'X post',p:w.d,lb:w.k.split(' · ')[1],view:()=>`<div class="vh"><img src="a/ryo.webp" alt=""><div><b>RYO</b><span>${esc(w.k)}</span></div><div class="act"><button data-tw="${w.id}">Read here</button><a href="https://x.com/notlikeryo_/status/${w.id}" target="_blank" rel="noopener">X ↗</a></div></div><div class="vcov"><img src="a/${w.img}.webp" alt=""></div><h3>${esc(w.t)}</h3><div class="bd"><p>${esc(w.d)}</p>${w.body.map(b=>`<p>${esc(b)}</p>`).join('')}</div><div class="chipr">${w.tags.map(t=>`<span>${t}</span>`).join('')}</div>`}))},
- {k:'experience',n:'Experience',items:XP.map(x=>({t:x.t,meta:x.r,p:x.d,lb:x.r,view:()=>`<div class="vh"><img src="a/ryo.webp" alt=""><div><b>${esc(x.t)}</b><span>${esc(x.r)}</span></div></div><h3>${esc(x.r)}</h3><div class="bd"><p>${esc(x.d)}</p></div><div class="chipr"><span>${x.r.includes('Growth')?'Growth':'Community'}</span><span>Coordination</span></div>`}))},
+ {k:'experience',n:'Experience',items:XP.map(x=>({t:x.t,meta:x.r,p:x.d,lb:x.r,view:()=>`<div class="vh"><img src="a/ryo.webp" alt=""><div><b>${esc(x.t)}</b><span>${esc(x.r)}</span></div>${x.posts?`<div class="act"><button data-tw="${x.posts[0].id}">Read here</button></div>`:''}</div>${x.posts?`<div class="vcov"><img src="a/${x.posts[x.posts[0].art?1:0].img}.webp" alt=""></div>`:''}<h3>${esc(x.r)}</h3><div class="bd"><p>${esc(x.d)}</p></div><div class="chipr"><span>${x.r.includes('Growth')?'Growth':x.r.includes('Content')?'Content':'Community'}</span><span>Coordination</span></div>`}))},
  {k:'services',n:'Services',items:SVC.map(s=>({t:s[0],meta:'Service',p:s[3]||'Part of how I help Web3 teams go from idea to execution.',lb:'Available',view:()=>`<div class="vh"><img src="a/ryo.webp" alt=""><div><b>${esc(s[0])}</b><span>What I do</span></div><div class="act"><a href="#contact">Hire for this</a></div></div><h3>${esc(s[0])}</h3><div class="bd"><p>${esc(s[3]||'Part of how I help Web3 teams go from idea to execution: content with context, execution with structure.')}</p></div>`}))},
  {k:'feedback',n:'Feedback',items:[{t:'Sebro · Toby Network',meta:'13 Mar 2025',p:'Great job managing the community, keep it up!',lb:'Client note',view:()=>`<div class="vh"><img src="a/ryo.webp" alt=""><div><b>Sebro · Toby Network</b><span>Client note</span></div></div><h3>“Great job managing the community, keep it up!”</h3><div class="fb"><img src="a/feedback.webp" alt="Discord message from Sebro"></div>`}]},
  {k:'contact',n:'Contact',items:[{t:'Email',meta:'Best for briefs',p:'notlikeshinaayo@gmail.com',lb:'Open for work',view:()=>`<div class="vh"><img src="a/ryo.webp" alt=""><div><b>Contact RYO</b><span>Open for work</span></div></div><h3>Let's build something worth talking about.</h3><div class="bd"><p>Email: notlikeshinaayo@gmail.com</p><p>Telegram: @notlikeryo</p><p>X: @notlikeryo_</p></div><div class="chipr"><a class="btn btn-w" style="height:38px;font-size:13.5px" href="mailto:notlikeshinaayo@gmail.com">Send an email</a></div>`},{t:'Telegram',meta:'@notlikeryo',p:'Quick questions and intros.',lb:'DMs open',view:()=>`<h3>Telegram</h3><div class="bd"><p>Message @notlikeryo for quick questions and intros.</p></div><div class="chipr"><a class="btn btn-w" style="height:38px;font-size:13.5px" href="https://t.me/notlikeryo" target="_blank" rel="noopener">Open Telegram</a></div>`}]}];
@@ -392,7 +430,8 @@ const ART={
  eco:`<svg viewBox="0 0 300 120"><g stroke="rgba(255,192,122,.5)" fill="none"><path d="M150 60L70 30M150 60L230 30M150 60L60 92M150 60L240 92M150 60L150 14"/></g><circle cx="150" cy="60" r="16" fill="#FF9A3D"/><g fill="#1A1410" stroke="#FFC07A"><circle cx="70" cy="30" r="9"/><circle cx="230" cy="30" r="9"/><circle cx="60" cy="92" r="9"/><circle cx="240" cy="92" r="9"/><circle cx="150" cy="14" r="7"/></g></svg>`,
  story:`<svg viewBox="0 0 300 120"><g fill="none" stroke="rgba(255,192,122,.55)" stroke-width="2" stroke-linecap="round"><path d="M30 34h150M30 54h210M30 74h120"/></g><rect x="190" y="66" width="80" height="34" rx="10" fill="#FF9A3D"/><path d="M212 83h36M240 77l8 6-8 6" stroke="#1A0E05" stroke-width="2.4" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>`};
 $('#wgrid').innerHTML=WRITING.map((w,i)=>`<button class="mc wcard rv d${i}" data-tw="${w.id}"><div class="cov"><img src="a/${w.img}.webp" alt="${esc(w.t)}" loading="lazy"></div><span class="tp">${esc(w.topic)}</span><h3>${esc(w.t)}</h3><p>${esc(w.d)}</p><div class="go">Read on X<i>→</i></div></button>`).join('');
-$('#xp').innerHTML=XP.map((x,i)=>`<div class="mc xr rv d${i}"><span class="n">0${i+1}</span><div><h3>${esc(x.t)}</h3><span class="role">${esc(x.r)}</span></div><p>${esc(x.d)}</p></div>`).join('');
+$('#xp').innerHTML=XP.map((x,i)=>`<div class="mc xr rv d${i}${x.posts?' has':''}"><span class="n">0${i+1}</span><div><h3>${esc(x.t)}</h3><span class="role">${esc(x.r)}</span></div><p>${esc(x.d)}</p>${x.posts?`<div class="xposts" style="--n:${x.posts.length}">${x.posts.map((p,k)=>pcard(p,k)).join('')}</div>`:''}</div>`).join('');
+$('#cgrid').innerHTML=COVER.map((c,i)=>pcard(c,i,c.topic)).join('');
 $('#svc').innerHTML=SVC.map(([t,ic,big,d],i)=>`<div class="mc sv rv${big?' big':''}"><span class="ic">${svg(ic)}</span><h3>${esc(t)}</h3>${big?`<p>${esc(d)}</p>`:''}</div>`).join('');
 
 /* reveals + counters */
@@ -405,7 +444,7 @@ document.addEventListener('pointermove',e=>{const c=e.target.closest&&e.target.c
 /* tweet modal */
 const md=$('#md');let twP=null,tok=0;
 function loadTw(){if(twP)return twP;twP=new Promise(res=>{const s=document.createElement('script');s.src='https://platform.twitter.com/widgets.js';s.async=true;s.onload=()=>res(window.twttr);s.onerror=()=>res(null);document.head.append(s);setTimeout(()=>res(window.twttr||null),8000)});return twP}
-function openTw(id){const w=WRITING.find(x=>x.id===id);if(!w)return;$('#mK').textContent=w.k;$('#mT').textContent=w.t;$('#mD').textContent=w.d;const url=`https://x.com/notlikeryo_/status/${id}`;$('#mL').href=url;
+function openTw(id){const w=POSTS[id];if(!w)return;$('#mK').textContent=w.k;$('#mT').textContent=w.t;$('#mD').textContent=w.d;const url=`https://x.com/notlikeryo_/status/${id}`;$('#mL').href=url;
   const tw=$('#tw');tw.innerHTML='<span class="ld">Loading the post…</span>';const my=++tok;md.classList.add('on');document.documentElement.style.overflow='hidden';
   loadTw().then(t=>{if(my!==tok)return;if(!t||!t.widgets){tw.innerHTML=`<a class="btn btn-w" href="${url}" target="_blank" rel="noopener">Read it on X ↗</a>`;return}
     t.widgets.createTweet(id,tw,{theme:'dark',dnt:true,align:'center',conversation:'none'}).then(el=>{if(my!==tok)return;const ld=tw.querySelector('.ld');if(el&&ld)ld.remove();if(!el)tw.innerHTML=`<a class="btn btn-w" href="${url}" target="_blank" rel="noopener">Read it on X ↗</a>`})})}
